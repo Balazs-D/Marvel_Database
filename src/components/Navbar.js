@@ -9,21 +9,27 @@ const Navbar = () => {
     <Router>
       <div>
         <nav>
-          <ul>
-            <li>
-              <Link to='/home'>Home</Link>
+          <ul className='nav-ul'>
+            <li className='nav-li'>
+              <Link className='nav-a' to='/home'>
+                Home
+              </Link>
             </li>
-            <li>
-              <Link to='/characters'>Characters</Link>
+            <li className='nav-li'>
+              <Link className='nav-a' to='/characters'>
+                Characters
+              </Link>
             </li>
-            <li>
-              <Link to='/events'>Events</Link>
+            <li className='nav-li'>
+              <Link className='nav-a' to='/events'>
+                Events
+              </Link>
             </li>
           </ul>
         </nav>
 
         <Switch>
-          <Route path="/home">
+          {/* <Route path='/home'>
             <Home />
           </Route>
 
@@ -33,7 +39,7 @@ const Navbar = () => {
 
           <Route path='events'>
             <Events />
-          </Route>
+          </Route> */}
         </Switch>
       </div>
     </Router>

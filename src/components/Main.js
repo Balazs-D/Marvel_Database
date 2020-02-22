@@ -8,8 +8,8 @@ const Main = () => {
           'https://gateway.marvel.com:443/v1/public/characters?apikey=80429f9cc6b04d6f8eb26487a6855001'
         );
 
-        let charakterList = res.data.data.results;
-        console.log(charakterList)
+        let characterList = res.data.data.results;
+        console.log(characterList)
     }
 
 
