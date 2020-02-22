@@ -3,19 +3,19 @@ import axios from 'axios';
 
 const Main = () => {
 
-    const doFetchAll=()=>{
-        let res = axios.get(
-          'http://gateway.marvel.com/comics?apikey=80429f9cc6b04d6f8eb26487a685500180429f9cc6b04d6f8eb26487a6855001'
+    const fetchCharacterList= async ()=>{
+        let res = await axios.get(
+          'https://gateway.marvel.com:443/v1/public/characters?apikey=80429f9cc6b04d6f8eb26487a6855001'
         );
 
-        let fetchedData = res.data;
-        console.log(res.data)
+        let charakterList = res.data.data.results;
+        console.log(charakterList)
     }
 
 
     return (
         <div>
-<button onClick={doFetchAll}>CLICK</button>
+<button onClick={fetchCharacterList}>CLICK</button>
         </div>
     )
 
