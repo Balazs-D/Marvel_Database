@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import MarvelContext from '../context/marvelContext';
 import Loading from './Loading';
-import CharCard from './CharCard';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import axios from 'axios';
 
 const Characters = () => {
