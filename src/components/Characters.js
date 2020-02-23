@@ -11,9 +11,7 @@ const Characters = () => {
     marvelCont.fetchCharacterList();
   }, []);
 
-  // fetchWithOffset 
-  // didFetch = 0
-  // if 
+  
 
 
   if(marvelCont.loading === true){
@@ -22,27 +20,38 @@ const Characters = () => {
 
   return (
     <div>
-
-      <div style={charListStyle} className='center-row escape-nav'>
-        {marvelCont.characters.map((char, i) => {
-          return (
-            <div className='card-border-wrapper'>
-              <div style={centerItem} key={i} className='main-font'>
-                <img
-                  src={`${char.thumbnail.path}/standard_large.${char.thumbnail.extension}`}
-                  alt=''
-                  style={{ marginTop: '2vw' }}
-                ></img>
-                <h4 style={name}>{char.name.toUpperCase()}</h4>
+      <div>
+        <InfiniteScroll
+          style={charListStyle}
+          className='center-row escape-nav'
+          dataLength={marvelCont.characters.length} //This is important field to render the next data
+          next={marvelCont.fetchWithOffset}
+          hasMore={true}
+          loader={Loading}
+          endMessage={
+            <p style={{ textAlign: 'center' }}>
+              <b>Yay! You have seen it all</b>
+            </p>
+          }
+        >
+          {marvelCont.characters.map((char, i) => {
+            return (
+              <div key={i} className='card-border-wrapper'>
+                <div style={centerItem} key={i} className='main-font'>
+                  <img
+                    src={`${char.thumbnail.path}/standard_large.${char.thumbnail.extension}`}
+                    alt=''
+                    style={{ marginTop: '2vw' }}
+                  ></img>
+                  <h4 style={name}>{char.name.toUpperCase()}</h4>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </InfiniteScroll>
       </div>
-
-      
     </div>
-  ) };
+  ); };
 };
 
 // Cards layout
