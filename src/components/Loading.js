@@ -15,6 +15,7 @@ const layout = {
   height: '100vh',
   width: '100vw',
   alignItems: 'center',
-  background: 'black'
+  background: 'black',
+  
 };
 export default Loading;
