@@ -14,45 +14,58 @@ body {
 }
 
 :root {
-  --main-red: #EC3E37;
+  --main-red: #ec3e37;
   --main-dark: #000;
 }
 
 @font-face {
   font-family: maintext;
-  src: url(../Kids\ Magazine.ttf);
-}
+src: url(../Kids\ Magazine.ttf);}
 
 .main-font {
   font-family: maintext;
 }
 
-
 /* ========================================== NAV */
+.escape-nav {
+  margin-top: 5%;
+}
+
+.nav-cont {
+  height: 100%;
+}
 
 .nav-ul {
   list-style: none;
   display: flex;
-  background-color: var(--main-red);
-
+  position: fixed;
+  top: 0%;
+  z-index: 100;
+  border-bottom: 0.2vw solid #12100E;
+  
+  width: 100%;
+  background: linear-gradient(
+    to right,
+  
+    #b38728 0%,
+    #fbf5b7 15%,
+    #aa771c 80%
+  );  margin: 0;
 }
 
 .nav-li {
   text-decoration: none;
   height: 100%;
   padding: 2vw;
-
-
 }
 
 .nav-li:hover {
   background-color: var(--main-dark);
   height: 100%;
-
 }
 
 .nav-a {
-  color: white;
+  color: #2C3E50;
 }
 
 .nav-a:hover {
@@ -62,6 +75,17 @@ body {
 
 /* ======================================= basics */
 
-.center-row {
-  
+.card-border-wrapper {
+  position: relative;
+  background: linear-gradient(
+    to right,
+    #bf953f,
+    #fcf6ba,
+    #b38728,
+    #fbf5b7,
+    #aa771c
+  );
+  width: 100%;
+  /* border-radius: 4%; */
+  padding: 0.5%;
 }

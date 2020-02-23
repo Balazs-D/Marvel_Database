@@ -1,5 +1,6 @@
 import {
-    FETCH_CHAR_LIST
+    FETCH_CHAR_LIST,
+    SET_LOADING
 } from './types';
 
 export default (state, action)=>{
@@ -10,7 +11,13 @@ export default (state, action)=>{
             return{
                 ...state,
                 characters: action.payload,
-                
+                loading: false 
+            };
+
+        case SET_LOADING:
+            return{
+                ...state,
+                loading: true
             }
 
         default:

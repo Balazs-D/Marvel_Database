@@ -1,6 +1,6 @@
 import React from 'react';
 import '../assets/css/style.css';
-import Main from './Characters';
+import Characters from './Characters';
 import Navbar from './Navbar';
 import MarvelState from '../context/MarvelState';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,7 +10,7 @@ export default function App() {
     <MarvelState>
       <div>
         <Navbar />
-        <Main />
+        <Characters />
       </div>
     </MarvelState>
   );

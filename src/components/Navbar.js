@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <Router>
       <div>
-        <nav>
+        <nav className='nav-cont'>
           <ul className='nav-ul'>
             <li className='nav-li'>
               <Link className='nav-a' to='/home'>
