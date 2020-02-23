@@ -18,6 +18,15 @@ body {
   --main-dark: #000;
 }
 
+@font-face {
+  font-family: maintext;
+  src: url(../Kids\ Magazine.ttf);
+}
+
+.main-font {
+  font-family: maintext;
+}
+
 
 /* ========================================== NAV */
 
@@ -49,4 +58,10 @@ body {
 .nav-a:hover {
   color: white;
   text-decoration: none;
+}
+
+/* ======================================= basics */
+
+.center-row {
+  
 }
