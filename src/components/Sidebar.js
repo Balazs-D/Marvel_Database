@@ -8,7 +8,6 @@ const Sidebar = () => {
   const onChange = e => {
     setText(e.target.value);
     console.log(e.target.value);
-    
   };
 
   const onSubmit = e => {
@@ -29,7 +28,14 @@ const Sidebar = () => {
           placeholder='Search...'
           onChange={onChange}
         />
-        <button type='submit' style={searchStyle} className='button-search main-font' value='Search' >GO!</button>
+        <button
+          type='submit'
+          style={searchStyle}
+          className='button-search main-font'
+          value='Search'
+        >
+          GO!
+        </button>
       </form>
     </div>
   );
@@ -59,8 +65,7 @@ const centerItem = {
 const searchStyle = {
   backgroundImage: 'linear-gradient(147deg, #000000 0%, #130F40 74%)',
   border: '1px solid #bf953f',
-  color: '#bf953f',
-  
+  color: '#bf953f'
 };
 
 export default Sidebar;

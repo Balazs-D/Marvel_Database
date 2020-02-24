@@ -30,4 +30,4 @@
 
 ![screenshot](/src/assets/screenshot.png)
 
-[Go to app.](https://facebook.github.io/create-react-app/docs/running-tests)
+[Go to app.](https://marvel-database.now.sh/)

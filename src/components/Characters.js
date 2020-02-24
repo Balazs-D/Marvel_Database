@@ -5,7 +5,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import JumpToTop from './JumpToTop';
 import Sidebar from './Sidebar';
 import axios from 'axios';
-import src from '/home/dci/DCI/lord-of-the-script/react/marvel-database/src/assets/loader.gif';
+import src from '../assets/loader.gif';
 
 const Characters = () => {
   const marvelCont = useContext(MarvelContext);
@@ -74,7 +74,6 @@ const charListStyle = {
   gridGap: '2rem',
   padding: '4vw',
   marginLeft: '35vh'
-
 };
 
 // Card layout
@@ -84,10 +83,10 @@ const centerItem = {
   flexDirection: 'column',
   justifyContent: 'flex-start',
   padding: '0',
-  
+
   width: '100%',
   height: '100%',
-  
+
   backgroundImage: 'linear-gradient(175deg, #12100E 70%, #2c3e50 90%)'
   //   borderRadius: '4%',
   //   border: '0.1vw solid lightgrey',
