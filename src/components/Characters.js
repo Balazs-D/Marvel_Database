@@ -24,8 +24,7 @@ const Characters = () => {
           flexDirection: 'row',
           justifyContent: 'center',
           backgroundImage: 'linear-gradient(147deg, #000000 0%, #130F40 74%)',
-          padding: '2%',
-
+          padding: '2%'
         }}
       >
         <Sidebar />
@@ -37,14 +36,14 @@ const Characters = () => {
             dataLength={marvelCont.characters.length} //This is important field to render the next data
             next={marvelCont.fetchWithOffset}
             hasMore={true}
-            loader={<p>...Loading</p>}
+            loader={<h1>Loading ... </h1>}
             endMessage={
               <p style={{ textAlign: 'center' }}>
                 <b>Yay! You have seen it all</b>
               </p>
             }
           >
-            <JumpToTop />
+            {window.pageYOffset > 10 ? <JumpToTop /> : null}
             {marvelCont.characters.map((char, i) => {
               return (
                 <div key={i} className='card-border-wrapper'>

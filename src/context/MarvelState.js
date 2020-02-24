@@ -6,7 +6,9 @@ import {
   FETCH_CHAR_LIST,
   SET_LOADING,
   FETCH_WITH_OFFSET,
-  COUNT_FETCH
+  COUNT_FETCH,
+  FETCH_SEARCH,
+  SET_SEARCH
 } from './types';
 import marvelCont from './marvelContext';
 
@@ -16,7 +18,8 @@ const MarvelState = props => {
     offsetList: [],
     character: {},
     fetchCounter: 1,
-    loading: false
+    loading: false,
+    search: false
   };
 
   const [state, dispatch] = useReducer(MarvelReducer, initialState);
@@ -41,28 +44,48 @@ const MarvelState = props => {
 
   // fetchOffset
 
-  const fetchWithOffset = async () => {
-
+  const fetchWithOffset = async (text) => {
     const offsetVal = state.fetchCounter * 20;
+   
+
+       let res = await axios.get(
+         `https://gateway.marvel.com:443/v1/public/characters?offset=${offsetVal}&apikey=80429f9cc6b04d6f8eb26487a6855001`
+       );
+
+       let nextCharList = res.data.data.results;
+       console.log(nextCharList);
+
+       let currCharList = state.characters;
+       nextCharList.map((item, i) => {
+         currCharList.push(item);
+       });
+
+       await dispatch({
+         type: FETCH_WITH_OFFSET,
+         payload: currCharList
+       });
+
+       countFetch();
+
+    
+   
+  };
+
+  // Fetch search
+
+  const fetchSearch = async text => {
+    setLoading();
 
     let res = await axios.get(
-      `https://gateway.marvel.com:443/v1/public/characters?offset=${offsetVal}&apikey=80429f9cc6b04d6f8eb26487a6855001`
+      `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${text}&apikey=80429f9cc6b04d6f8eb26487a6855001`
     );
 
-    let nextCharList = res.data.data.results;
-    console.log(nextCharList);
+    let searchList = res.data.data.results;
 
-    let currCharList = state.characters;
-    nextCharList.map((item, i) => {
-      currCharList.push(item);
-    });
-
-    await dispatch({
-      type: FETCH_WITH_OFFSET,
-      payload: currCharList
-    });
-
-    countFetch();
+    dispatch({
+      type: FETCH_SEARCH,
+      payload: searchList,
+    })
   };
 
   // Set Loading
@@ -71,6 +94,10 @@ const MarvelState = props => {
   // Fetch counter
 
   const countFetch = () => dispatch({ type: COUNT_FETCH });
+
+  // Set search 
+
+  const setSearch =()=>dispatch({type: SET_SEARCH});
 
   return (
     <MarvelContext.Provider
@@ -81,7 +108,9 @@ const MarvelState = props => {
         fetchCharacterList,
         fetchWithOffset,
         setLoading,
-        countFetch
+        countFetch,
+        fetchSearch,
+        setSearch
       }}
     >
       {props.children}
