@@ -67,7 +67,7 @@ src: url(../KidsMagazine.ttf);
 }
 
 .nav-li:hover {
-  background-image: radial-gradient(grey 0%, transparent 60%) ;
+  background-image: radial-gradient(white 0%, transparent 60%) ;
   height: 100%;
 }
 

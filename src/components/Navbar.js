@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Home from './Home';
 import Characters from './Characters';
 import Events from './Events';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import MarvelCont from '../context/marvelContext';
 
 const Navbar = () => {
+
+  const marvelCont = useContext(MarvelCont);
   return (
     <Router>
       <div>
@@ -16,7 +19,11 @@ const Navbar = () => {
               </Link>
             </li>
             <li className='nav-li'>
-              <Link className='nav-a' to='/characters'>
+              <Link
+                className='nav-a'
+                onClick={marvelCont.fetchCharacterList}
+                to='/characters'
+              >
                 Characters
               </Link>
             </li>
@@ -29,7 +36,7 @@ const Navbar = () => {
         </nav>
 
         <Switch>
-          {/* <Route path='/home'>
+          <Route path='/home'>
             <Home />
           </Route>
 
@@ -39,7 +46,7 @@ const Navbar = () => {
 
           <Route path='events'>
             <Events />
-          </Route> */}
+          </Route>
         </Switch>
       </div>
     </Router>
