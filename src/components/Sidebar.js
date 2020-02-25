@@ -11,11 +11,12 @@ const Sidebar = () => {
   };
 
   const onSubmit = e => {
+    marvelCont.setSearch();
     e.preventDefault();
     console.log(e.target.value, text);
 
     marvelCont.fetchSearch(text);
-    marvelCont.setSearch();
+    // marvelCont.setSearch();
     setText('');
   };
 
@@ -28,14 +29,17 @@ const Sidebar = () => {
           placeholder='Search...'
           onChange={onChange}
         />
+        <div style={buttonLay}>
+        
         <button
-          type='submit'
-          style={searchStyle}
-          className='button-search main-font'
-          value='Search'
+        type='submit'
+        style={searchStyle}
+        className='main-font'
+        value='Search'
         >
-          GO!
+        GO!
         </button>
+        <button style={searchStyle} onClick={marvelCont.fetchCharacterList} className='main-font'>RESET</button></div>
       </form>
     </div>
   );
@@ -52,7 +56,7 @@ const sidebarStyle = {
 
 const centerItem = {
   display: 'flex',
-  alignItems: 'flex-start',
+  // alignItems: 'flex-start',
 
   flexDirection: 'column',
   justifyContent: 'flex-start',
@@ -65,7 +69,20 @@ const centerItem = {
 const searchStyle = {
   backgroundImage: 'linear-gradient(147deg, #000000 0%, #130F40 74%)',
   border: '1px solid #bf953f',
-  color: '#bf953f'
+  color: '#bf953f',
+  padding: '0.5vw',
+  boxShadow: '0.2vw 0.3vw 0.4vw black',
+
 };
+
+const buttonLay = {
+ display: 'flex',
+ flexDirection: 'row',
+ justifyContent: 'space-between',
+
+};
+
+
+
 
 export default Sidebar;

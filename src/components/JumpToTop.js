@@ -1,16 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-const JumpToTop =()=> {
-
+const JumpToTop = () => {
     const jump = () => {
-        window.scrollTo(0, 0)
+      window.scrollTo(0, 0) 
     };
 
     return (
       <div style={actionBar}>
-        <button style={buttonStyle} className='main-font' onClick={jump}>UP!</button>
+        <button
+          style={buttonStyle}
+          className='main-font'
+          onClick={jump}
+        >
+          UP!
+        </button>
       </div>
     );
+
 };
 
 const actionBar = {
@@ -35,7 +41,5 @@ const buttonStyle = {
   color: '#fcf6ba',
   textShadow: '0vw 0.2vw 0.3vw black'
 };
-
-
 
 export default JumpToTop;

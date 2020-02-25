@@ -107,6 +107,8 @@ src: url(../KidsMagazine.ttf);
 }
 
 
+
+
 input[type='text'] {
 border: 1px solid #aa771c;
 padding: .5vw;
@@ -116,4 +118,10 @@ margin-bottom: 2vw;
 color:#fbf5b7;
 font-weight: 100;
 };
+
+.shadow {
+
+      box-shadow: 0.4vw 0.3vw 0.4vw red;
+
+}
 
