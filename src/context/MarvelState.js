@@ -10,7 +10,8 @@ import {
   FETCH_SEARCH,
   SET_SEARCH,
   NULL_SEARCH,
-  GET_S_TEXT
+  GET_S_TEXT,
+  RESET_FETCH
 } from './types';
 import marvelCont from './marvelContext';
 
@@ -32,6 +33,8 @@ const MarvelState = props => {
   const fetchCharacterList = async () => {
     setLoading();
     setSearch();
+    resetFetch();
+
 
     let res = await axios.get(
       'https://gateway.marvel.com:443/v1/public/characters?apikey=80429f9cc6b04d6f8eb26487a6855001'
@@ -106,6 +109,7 @@ await dispatch({
   const fetchSearch = async text => {
     setLoading();
     nullSearch();
+    resetFetch();
 
     const getText = text;
     
@@ -124,6 +128,10 @@ getSearchText(text);
 
   // Set Loading
   const setLoading = () => dispatch({ type: SET_LOADING });
+
+  // Reset fetch counter
+
+  const resetFetch = () => dispatch({type: RESET_FETCH});
 
   // Fetch counter
 
@@ -159,7 +167,8 @@ getSearchText(text);
         fetchSearch,
         setSearch, 
         nullSearch,
-        getSearchText
+        getSearchText,
+        resetFetch
       }}
     >
       {props.children}

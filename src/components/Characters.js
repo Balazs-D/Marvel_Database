@@ -36,10 +36,10 @@ const Characters = () => {
             dataLength={marvelCont.characters.length} //This is important field to render the next data
             next={marvelCont.fetchWithOffset}
             hasMore={true}
-            loader={<h1>Loading ... </h1>}
+            loader={<img src={src} style={{width: '100%', height: '100%', objectFit: 'cover' }} alt=''></img>}
             endMessage={
               <p style={{ textAlign: 'center' }}>
-                <b>Yay! You have seen it all</b>
+                Yay! You have seen it all
               </p>
             }
           >

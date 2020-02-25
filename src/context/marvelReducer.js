@@ -1,4 +1,14 @@
-import { FETCH_CHAR_LIST, SET_LOADING, FETCH_WITH_OFFSET, COUNT_FETCH, FETCH_SEARCH, SET_SEARCH, NULL_SEARCH, GET_S_TEXT } from './types';
+import {
+  FETCH_CHAR_LIST,
+  SET_LOADING,
+  FETCH_WITH_OFFSET,
+  COUNT_FETCH,
+  FETCH_SEARCH,
+  SET_SEARCH,
+  NULL_SEARCH,
+  GET_S_TEXT,
+  RESET_FETCH,
+} from './types';
 import marvelCont from './marvelContext';
 
 export default (state, action) => {
@@ -6,7 +16,7 @@ export default (state, action) => {
     case FETCH_CHAR_LIST:
       return {
         ...state,
-        characters: action.payload  ,
+        characters: action.payload,
         loading: false,
         search: false
       };
@@ -23,8 +33,8 @@ export default (state, action) => {
         ...state,
         characters: action.payload,
         loading: false,
-        search: true,
-      }
+        search: true
+      };
 
     case SET_LOADING:
       return {
@@ -42,21 +52,25 @@ export default (state, action) => {
       return {
         ...state,
         search: true
-      }
-
-    case COUNT_FETCH: 
-      return{
-        ...state,
-        fetchCounter: state.fetchCounter+1,
       };
 
-    
+    case COUNT_FETCH:
+      return {
+        ...state,
+        fetchCounter: state.fetchCounter + 1
+      };
+
+    case RESET_FETCH:
+      return {
+        ...state,
+        fetchCounter: 1
+      };
+
     case GET_S_TEXT:
-      return{
+      return {
         ...state,
         searchText: action.payload
-      }
-    
+      };
 
     default:
       return state;
