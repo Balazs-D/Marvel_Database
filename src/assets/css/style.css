@@ -67,18 +67,31 @@ src: url(../KidsMagazine.ttf);
 }
 
 .nav-li:hover {
-  background-image: radial-gradient(grey 0%, transparent 60%) ;
   height: 100%;
 }
 
 .nav-a {
-  color: #2C3E50;
-}
+  color: #2C3E50;	  /* color: #2C3E50; */
+  
+  opacity: 1;
+  margin-right: 2vw;
+  background-color: transparent;
+  padding: 0.01vw 0.6vw;
+  border-radius: 1vw;
+  mix-blend-mode: exclusion;
+  text-shadow: 0px 0px 1px black;
+  transition: all 1s ease-out;
+
+}	
+
 
 .nav-a:hover {
-  color: #2C3E50;
-  text-decoration: none;
-}
+   color: #b38728;
+  	  text-decoration: none;
+  mix-blend-mode: exclusion;
+  opacity: 1;
+  text-shadow: 0px 0px 4px black;
+}	
 
 /* ======================================= basics */
 
