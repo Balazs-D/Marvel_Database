@@ -31,11 +31,11 @@ const goldBg = {
         <nav className='nav-cont'>
           <ul className='nav-ul serif-font' style={goldBg} onMouseMove={mouseMove}>
 
-            <li className='nav-li'>
+            {/* <li className='nav-li'>
               <Link className='nav-a' to='/home'>
                 HOME
               </Link>
-            </li>
+            </li> */}
             <li className='nav-li'>
              
 
@@ -47,11 +47,11 @@ const goldBg = {
                 Characters
               </Link>
             </li>
-            <li className='nav-li'>
+            {/* <li className='nav-li'>
               <Link className='nav-a' to='/events'>
                 EVENTS
               </Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
 

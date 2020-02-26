@@ -25,9 +25,9 @@ export default function App() {
               <Characters />
             </Route>
 
-            {/* <Route path='/characters/:id'>
+            <Route path='/characters/:id'>
               <Char />
-            </Route> */}
+            </Route>
 
             <Route path='events'>
               <Events />
