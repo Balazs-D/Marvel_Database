@@ -2,7 +2,6 @@
 ::before,
 ::after {
   box-sizing: border-box;
-  
 }
 
 ::-webkit-scrollbar {
@@ -25,21 +24,29 @@ body {
 
 @font-face {
   font-family: maintext;
-src: url(../KidsMagazine.ttf);
+  src: url(../KidsMagazine.ttf);
+}
+
+@font-face {
+  font-family: seriftext;
+  src: url(../Night.ttf);
 }
 
 .main-font {
   font-family: maintext;
-
 }
 
 @font-face {
   font-family: menutext;
-  src: url(../Constantine.ttf)
+  src: url(../Constantine.ttf);
 }
 
 .menu-font {
   font-family: menutext;
+}
+
+.serif-font {
+  font-family: seriftext;
 }
 
 /* ========================================== NAV */
@@ -58,16 +65,17 @@ src: url(../KidsMagazine.ttf);
   position: fixed;
   top: 0%;
   z-index: 100;
-  border-bottom: 0.2vw solid #12100E;
-  
+  border-bottom: 0.2vw solid #12100e;
+
   width: 100%;
-  background: linear-gradient(
+  /* background: linear-gradient(
     to right,
   
     #b38728 0%,
     #fbf5b7 15%,
     #aa771c 80%
-  );  margin: 0;
+  );   */
+  margin: 0;
 }
 
 .nav-li {
@@ -75,13 +83,13 @@ src: url(../KidsMagazine.ttf);
   height: 100%;
 }
 
-.nav-li:hover {
-  height: 100%;
-}
+
+
+
 
 .nav-a {
-  color: #2C3E50;	  /* color: #2C3E50; */
-  
+  color: #2c3e50; /* color: #2C3E50; */
+
   opacity: 1;
   margin-right: 2vw;
   background-color: transparent;
@@ -91,19 +99,18 @@ src: url(../KidsMagazine.ttf);
   /* text-shadow: 0px 0px 2px black; */
   transition: all 1s ease-out;
   font-size: 3vw;
-
-}	
-
+}
 
 .nav-a:hover {
-   color: #b38728;
-  	  text-decoration: none;
-  /* mix-blend-mode: exclusion; */
-  opacity: 1;
+  color: #b38728;
+  text-decoration: none;
+    padding: 0.01vw 0.6vw;
+      opacity: 1;
+      
   /* text-shadow: 0px 0px 4px black; */
-}	
+    /* mix-blend-mode: exclusion; */
 
-/* ======================================= basics */
+}
 
 .card-border-wrapper {
   position: relative;
@@ -119,9 +126,8 @@ src: url(../KidsMagazine.ttf);
 
   /* border-radius: 4%; */
   padding: 0.55% 0.65%;
-    box-shadow: 0.4vw 0.7vw 0.7vw black;
-
-};
+  box-shadow: 0.4vw 0.7vw 0.7vw black;
+}
 
 .d-row {
   display: flex;
@@ -129,22 +135,37 @@ src: url(../KidsMagazine.ttf);
   justify-content: flex-start;
 }
 
-
-
-
 input[type='text'] {
-border: 1px solid #aa771c;
-padding: .5vw;
-background-image: linear-gradient(147deg, #000000 0%, #130F40 74%);
-    box-shadow: 0.2vw 0.3vw 0.4vw black;
-margin-bottom: 2vw;
-color:#fbf5b7;
-font-weight: 100;
-};
-
-.shadow {
-
-      box-shadow: 0.4vw 0.3vw 0.4vw red;
-
+  border: 1px solid #aa771c;
+  padding: 0.5vw;
+  background-image: linear-gradient(147deg, #000000 0%, #130f40 74%);
+  box-shadow: 0.2vw 0.3vw 0.4vw black;
+  margin-bottom: 2vw;
+  color: #fbf5b7;
+  font-weight: 100;
 }
 
+.shadow {
+  box-shadow: 0.4vw 0.3vw 0.4vw red;
+}
+
+/* ==========================  TRANSITIONS ================ */
+
+.item-enter {
+  opacity: 0;
+  left: 25%;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: all 500ms ease-in;
+  left: 0%;
+}
+.item-exit {
+  opacity: 1;
+  left: 0%;
+}
+.item-exit-active {
+  opacity: 0;
+  transition: all 500ms ease-in;
+  left: 25%;
+}

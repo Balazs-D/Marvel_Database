@@ -10,6 +10,7 @@ const Sidebar = () => {
     console.log(e.target.value);
   };
 
+
      const onSubmit = e => {
 
        if (text === '') {
@@ -29,6 +30,7 @@ const Sidebar = () => {
 
    
   
+
 
   return (
     <div style={sidebarStyle}>

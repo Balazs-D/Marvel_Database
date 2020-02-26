@@ -25,18 +25,26 @@ const goldBg = {
 };
 
 
+
   return (
       <div>
         <nav className='nav-cont'>
-          <ul className='nav-ul menu-font' style={goldBg} onMouseMove={mouseMove}>
+          <ul className='nav-ul serif-font' style={goldBg} onMouseMove={mouseMove}>
+
             <li className='nav-li'>
               <Link className='nav-a' to='/home'>
                 HOME
               </Link>
             </li>
             <li className='nav-li'>
-              <Link className='nav-a' to='/characters' onClick={marvelCont.fetchCharacterList}>
-                CHARACTERS
+             
+
+              <Link
+                className='nav-a'
+                onClick={marvelCont.fetchCharacterList}
+                to='/characters'
+              >
+                Characters
               </Link>
             </li>
             <li className='nav-li'>
@@ -47,9 +55,12 @@ const goldBg = {
           </ul>
         </nav>
 
-       
+
+        
       </div>
   );
 };
+
+
 
 export default Navbar;

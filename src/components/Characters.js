@@ -4,6 +4,7 @@ import Loading from './Loading';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import JumpToTop from './JumpToTop';
 import { Link } from 'react-router-dom';
+import { src } from '/home/dci/DCI/lord-of-the-script/react/marvel-database/src/assets/loader.gif';
 
 import Sidebar from './Sidebar';
 
@@ -11,9 +12,9 @@ import Sidebar from './Sidebar';
 const Characters = () => {
   const marvelCont = useContext(MarvelContext);
 
-  useEffect(() => {
-    marvelCont.fetchCharacterList();
-  }, []);
+  // useEffect(() => {
+  //   marvelCont.fetchCharacterList();
+  // }, []);
 
   if (marvelCont.loading === true) {
     return <Loading />;
@@ -30,21 +31,24 @@ const Characters = () => {
       >
         <Sidebar />
 
-        <div>
-          <InfiniteScroll
-            style={charListStyle}
-            className='escape-nav'
-            dataLength={marvelCont.characters.length} //This is important field to render the next data
-            next={marvelCont.fetchWithOffset}
-            hasMore={true}
-            loader={<h1>Loading ... </h1>}
-            endMessage={
-              <p style={{ textAlign: 'center' }}>
-                <b>Yay! You have seen it all</b>
-              </p>
-            }
-          >
-            {window.pageYOffset > 10 ? <JumpToTop /> : null}
+        <InfiniteScroll
+          className='escape-nav'
+          style={charListStyle}
+          dataLength={marvelCont.characters.length} //This is important field to render the next data
+          next={marvelCont.fetchWithOffset}
+          hasMore={true}
+          loader={
+            <img
+              src={src}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              alt=''
+            ></img>
+          }
+          endMessage={
+            <p style={{ textAlign: 'center' }}>Yay! You have seen it all</p>
+          }
+        >
+          {window.pageYOffset > 10 ? <JumpToTop /> : null}
             {marvelCont.characters.map((char, i) => {
               return (
                 <div key={i} className='card-border-wrapper'>
@@ -59,8 +63,8 @@ const Characters = () => {
                 </div>
               );
             })}
-          </InfiniteScroll>
-        </div>
+          
+        </InfiniteScroll>
       </div>
     );
   }
@@ -71,7 +75,7 @@ const charListStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(4, 15vw)',
   width: '100%',
-  height: '100%',
+  height: '100',
   gridGap: '2rem',
   padding: '4vw',
   marginLeft: '35vh'
@@ -94,7 +98,6 @@ const centerItem = {
   //   padding: '2vw'
 };
 
-// Character name style
 const name = {
   textAlign: 'center',
   fontSize: '.7vw',

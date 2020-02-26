@@ -7,3 +7,5 @@ export const SET_SEARCH = 'SET_SEARCH';
 export const NULL_SEARCH = 'NULL_SEARCH';
 export const GET_S_TEXT = 'GET_S_TEXT';
 export const RESET = 'RESET';
+export const RESET_FETCH = 'RESET_FETCH';
+export const RESET_TEXT = 'RESET_TEXT';
