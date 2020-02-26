@@ -1,12 +1,16 @@
-import React, {useState} from 'react';
-import Home from './Home';
-import Characters from './Characters';
-import Events from './Events';
+import React, {useState, useContext} from 'react';
+
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import MarvelCont from '../context/marvelContext';
 
 const Navbar = () => {
 
-const [per, setPer] = useState(0);
+  const [per, setPer] = useState(0);
+  const marvelCont = useContext(MarvelCont);
+
+ 
+
+
 
 const mouseMove = e => {
   setPer(Math.round((e.screenX / window.innerWidth) * 100));
@@ -22,43 +26,29 @@ const goldBg = {
 
 
   return (
-    <Router>
       <div>
         <nav className='nav-cont'>
-          <ul className='nav-ul' style={goldBg} onMouseMove={mouseMove}>
+          <ul className='nav-ul menu-font' style={goldBg} onMouseMove={mouseMove}>
             <li className='nav-li'>
               <Link className='nav-a' to='/home'>
-                Home
+                HOME
               </Link>
             </li>
             <li className='nav-li'>
-              <Link className='nav-a' to='/characters'>
-                Characters
+              <Link className='nav-a' to='/characters' onClick={marvelCont.fetchCharacterList}>
+                CHARACTERS
               </Link>
             </li>
             <li className='nav-li'>
               <Link className='nav-a' to='/events'>
-                Events
+                EVENTS
               </Link>
             </li>
           </ul>
         </nav>
 
-        <Switch>
-          {/* <Route path='/home'>
-            <Home />
-          </Route>
-
-          <Route path='/characters'>
-            <Characters />
-          </Route>
-
-          <Route path='events'>
-            <Events />
-          </Route> */}
-        </Switch>
+       
       </div>
-    </Router>
   );
 };
 

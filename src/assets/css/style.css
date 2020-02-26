@@ -30,6 +30,16 @@ src: url(../KidsMagazine.ttf);
 
 .main-font {
   font-family: maintext;
+
+}
+
+@font-face {
+  font-family: menutext;
+  src: url(../Constantine.ttf)
+}
+
+.menu-font {
+  font-family: menutext;
 }
 
 /* ========================================== NAV */
@@ -63,7 +73,6 @@ src: url(../KidsMagazine.ttf);
 .nav-li {
   text-decoration: none;
   height: 100%;
-  padding: 2vw;
 }
 
 .nav-li:hover {
@@ -78,9 +87,10 @@ src: url(../KidsMagazine.ttf);
   background-color: transparent;
   padding: 0.01vw 0.6vw;
   border-radius: 1vw;
-  mix-blend-mode: exclusion;
-  text-shadow: 0px 0px 1px black;
+  /* mix-blend-mode: exclusion; */
+  /* text-shadow: 0px 0px 2px black; */
   transition: all 1s ease-out;
+  font-size: 3vw;
 
 }	
 
@@ -88,9 +98,9 @@ src: url(../KidsMagazine.ttf);
 .nav-a:hover {
    color: #b38728;
   	  text-decoration: none;
-  mix-blend-mode: exclusion;
+  /* mix-blend-mode: exclusion; */
   opacity: 1;
-  text-shadow: 0px 0px 4px black;
+  /* text-shadow: 0px 0px 4px black; */
 }	
 
 /* ======================================= basics */
@@ -116,7 +126,7 @@ src: url(../KidsMagazine.ttf);
 .d-row {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 

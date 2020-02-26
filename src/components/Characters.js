@@ -1,11 +1,12 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import MarvelContext from '../context/marvelContext';
 import Loading from './Loading';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import JumpToTop from './JumpToTop';
+import { Link } from 'react-router-dom';
+
 import Sidebar from './Sidebar';
-import axios from 'axios';
-import src from '../assets/loader.gif';
+
 
 const Characters = () => {
   const marvelCont = useContext(MarvelContext);
@@ -47,13 +48,13 @@ const Characters = () => {
             {marvelCont.characters.map((char, i) => {
               return (
                 <div key={i} className='card-border-wrapper'>
-                  <div style={centerItem} key={i} className='main-font'>
+                  <div style={centerItem} className='main-font'>
                     <img
                       src={`${char.thumbnail.path}/standard_large.${char.thumbnail.extension}`}
                       alt=''
                       style={{ marginTop: '2vw' }}
                     ></img>
-                    <h4 style={name}>{char.name.toUpperCase()}</h4>
+                    <Link to={`/characters/${char.id}`} style={name}>{char.name.toUpperCase()}</Link>
                   </div>
                 </div>
               );

@@ -10,15 +10,25 @@ const Sidebar = () => {
     console.log(e.target.value);
   };
 
-  const onSubmit = e => {
-    marvelCont.setSearch();
-    e.preventDefault();
-    console.log(e.target.value, text);
+     const onSubmit = e => {
 
-    marvelCont.fetchSearch(text);
-    // marvelCont.setSearch();
-    setText('');
-  };
+       if (text === '') {
+       marvelCont.fetchCharacterList();
+       } else {
+
+         marvelCont.setSearch();
+         e.preventDefault();
+         console.log(e.target.value, text);
+
+         marvelCont.fetchSearch(text);
+         // marvelCont.setSearch();
+         setText('');
+       }
+     };
+
+
+   
+  
 
   return (
     <div style={sidebarStyle}>
