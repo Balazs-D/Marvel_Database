@@ -12,9 +12,9 @@ import Sidebar from './Sidebar';
 const Characters = () => {
   const marvelCont = useContext(MarvelContext);
 
-  // useEffect(() => {
-  //   marvelCont.fetchCharacterList();
-  // }, []);
+  useEffect(() => {
+    marvelCont.fetchCharacterList();
+  }, []);
 
   if (marvelCont.loading === true) {
     return <Loading />;
