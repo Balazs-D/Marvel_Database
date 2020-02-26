@@ -11,9 +11,11 @@ import {
   SET_SEARCH,
   NULL_SEARCH,
   GET_S_TEXT,
-  RESET_FETCH
+  RESET_FETCH,
+  RESET_TEXT
 } from './types';
 import marvelCont from './marvelContext';
+import JumpToTop from '../components/JumpToTop';
 
 const MarvelState = props => {
   const initialState = {
@@ -23,7 +25,7 @@ const MarvelState = props => {
     fetchCounter: 1,
     loading: false,
     search: true,
-    searchText: '',
+    searchText: ''
   };
 
   const [state, dispatch] = useReducer(MarvelReducer, initialState);
@@ -35,13 +37,13 @@ const MarvelState = props => {
     setSearch();
     resetFetch();
 
-
     let res = await axios.get(
       'https://gateway.marvel.com:443/v1/public/characters?apikey=80429f9cc6b04d6f8eb26487a6855001'
     );
 
     let characterList = res.data.data.results;
     console.log(characterList);
+    JumpToTop();
 
     dispatch({
       type: FETCH_CHAR_LIST,
@@ -54,54 +56,47 @@ const MarvelState = props => {
   const fetchWithOffset = async text => {
     const offsetVal = state.fetchCounter * 20;
 
+    if (state.searchText.text) {
+      const res = await axios.get(
+        `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${state.searchText.text}&offset=${offsetVal}&apikey=80429f9cc6b04d6f8eb26487a6855001`
+      );
+      let nextCharList = res.data.data.results;
+     
 
+      let currCharList = state.characters;
+      nextCharList.map((item, i) => {
+        currCharList.push(item);
+      });
+console.log( 'if search offset')
+      await dispatch({
+        type: FETCH_WITH_OFFSET,
+        payload: currCharList
+      });
+    } else {
+      
+      const res = await axios.get(
+        `https://gateway.marvel.com:443/v1/public/characters?offset=${offsetVal}&apikey=80429f9cc6b04d6f8eb26487a6855001`
+      );
+      let nextCharList = res.data.data.results;
+console.log('if empty offset');
 
-    if(state.searchText.text){
- const res = await axios.get(
-   `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${state.searchText.text}&offset=${offsetVal}&apikey=80429f9cc6b04d6f8eb26487a6855001`
- );
- console.log(state.searchText);
- console.log(res);
- let nextCharList = res.data.data.results;
- console.log(nextCharList);
+      let currCharList = state.characters;
+      nextCharList.map((item, i) => {
+        currCharList.push(item);
+      });
 
- let currCharList = state.characters;
- nextCharList.map((item, i) => {
-   currCharList.push(item);
- });
-
- await dispatch({
-   type: FETCH_WITH_OFFSET,
-   payload: currCharList
- });
-
-    }else{
-const res = await axios.get(
-  `https://gateway.marvel.com:443/v1/public/characters?offset=${offsetVal}&apikey=80429f9cc6b04d6f8eb26487a6855001`
-);
-console.log(state.searchText);
-console.log(res);
-let nextCharList = res.data.data.results;
-console.log(nextCharList);
-
-let currCharList = state.characters;
-nextCharList.map((item, i) => {
-  currCharList.push(item);
-});
-
-await dispatch({
-  type: FETCH_WITH_OFFSET,
-  payload: currCharList
-});
+      await dispatch({
+        type: FETCH_WITH_OFFSET,
+        payload: currCharList
+      });
     }
-    console.log(offsetVal)
+    console.log(offsetVal);
 
-    console.log(state.searchText)
+    console.log(state.searchText, state.fetchCounter);
 
-   
     // }
 
-    countFetch();
+   countFetch();
   };
 
   // Fetch search
@@ -112,8 +107,8 @@ await dispatch({
     resetFetch();
 
     const getText = text;
-    
-getSearchText(text);
+
+    getSearchText(text);
     const res = await axios.get(
       `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${getText}&apikey=80429f9cc6b04d6f8eb26487a6855001`
     );
@@ -131,7 +126,7 @@ getSearchText(text);
 
   // Reset fetch counter
 
-  const resetFetch = () => dispatch({type: RESET_FETCH});
+  const resetFetch = () => dispatch({ type: RESET_FETCH });
 
   // Fetch counter
 
@@ -143,16 +138,22 @@ getSearchText(text);
 
   // Set search false
 
-  const nullSearch = () => dispatch({type : NULL_SEARCH });
+  const nullSearch = () => dispatch({ type: NULL_SEARCH });
+
+  // reset text
+
+  const resetText = () => dispatch({type: RESET_TEXT})
 
   // set search text
 
-  const getSearchText = (text) => {
-    
-    
-    console.log({text})
-    
-    dispatch({type: GET_S_TEXT, payload: {text} })}
+  const getSearchText = text => {
+    console.log({ text });
+
+    dispatch({
+      type: GET_S_TEXT,
+      payload: { text }
+    });
+  };
 
   return (
     <MarvelContext.Provider
@@ -165,10 +166,11 @@ getSearchText(text);
         setLoading,
         countFetch,
         fetchSearch,
-        setSearch, 
+        setSearch,
         nullSearch,
         getSearchText,
-        resetFetch
+        resetFetch,
+        resetText
       }}
     >
       {props.children}

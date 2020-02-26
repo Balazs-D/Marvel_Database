@@ -11,13 +11,17 @@ const Sidebar = () => {
   };
 
   const onSubmit = e => {
-    marvelCont.setSearch();
+
+     if (text === '') {
+       marvelCont.fetchCharacterList()
+      //  alertContext.setAlert('Please enter some text', 'info');
+     } else{ marvelCont.setSearch();
     e.preventDefault();
     console.log(e.target.value, text);
 
     marvelCont.fetchSearch(text);
     // marvelCont.setSearch();
-    setText('');
+    setText('');}
   };
 
   return (

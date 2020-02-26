@@ -8,6 +8,7 @@ import {
   NULL_SEARCH,
   GET_S_TEXT,
   RESET_FETCH,
+  RESET_TEXT
 } from './types';
 import marvelCont from './marvelContext';
 
@@ -63,8 +64,16 @@ export default (state, action) => {
     case RESET_FETCH:
       return {
         ...state,
-        fetchCounter: 1
+        fetchCounter: 1,
+        searchText: '',
+        
       };
+
+    case RESET_TEXT: 
+    return {
+      ...state,
+      searchText: '',
+    };
 
     case GET_S_TEXT:
       return {

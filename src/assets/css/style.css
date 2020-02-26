@@ -2,7 +2,6 @@
 ::before,
 ::after {
   box-sizing: border-box;
-  
 }
 
 ::-webkit-scrollbar {
@@ -25,11 +24,20 @@ body {
 
 @font-face {
   font-family: maintext;
-src: url(../KidsMagazine.ttf);
+  src: url(../KidsMagazine.ttf);
+}
+
+@font-face {
+  font-family: seriftext;
+  src: url(../Night\ DEMO.ttf);
 }
 
 .main-font {
   font-family: maintext;
+}
+
+.serif-font {
+  font-family: seriftext;
 }
 
 /* ========================================== NAV */
@@ -48,36 +56,51 @@ src: url(../KidsMagazine.ttf);
   position: fixed;
   top: 0%;
   z-index: 100;
-  border-bottom: 0.2vw solid #12100E;
-  
+  border-bottom: 0.2vw solid #12100e;
+
   width: 100%;
-  background: linear-gradient(
+  /* background: linear-gradient(
     to right,
   
     #b38728 0%,
     #fbf5b7 15%,
     #aa771c 80%
-  );  margin: 0;
+  );   */
+  margin: 0;
 }
 
 .nav-li {
   text-decoration: none;
   height: 100%;
-  padding: 2vw;
+  padding: 0.3vw;
+  display: flex;
 }
 
 .nav-li:hover {
-  background-image: radial-gradient(white 0%, transparent 60%) ;
+  /* background-image: radial-gradient(white 0%, transparent 60%) ; */
   height: 100%;
 }
 
 .nav-a {
-  color: #2C3E50;
+  /* color: #2C3E50; */
+  color: rgb(255, 217, 0);
+  opacity: 1;
+  margin-right: 2vw;
+  /* background-color: transparent; */
+  padding: 0.01vw 0.6vw;
+  border-radius: 1vw;
+  mix-blend-mode: exclusion;
+  text-shadow: 0px 0px 1px black;
+  transition: all 1s ease-out;
+
 }
 
 .nav-a:hover {
-  color: #2C3E50;
+  color: #b38728;
   text-decoration: none;
+  mix-blend-mode: exclusion;
+  opacity: 1;
+  text-shadow: 0px 0px 4px black;
 }
 
 /* ======================================= basics */
@@ -96,9 +119,8 @@ src: url(../KidsMagazine.ttf);
 
   /* border-radius: 4%; */
   padding: 0.55% 0.65%;
-    box-shadow: 0.4vw 0.7vw 0.7vw black;
-
-};
+  box-shadow: 0.4vw 0.7vw 0.7vw black;
+}
 
 .d-row {
   display: flex;
@@ -106,22 +128,37 @@ src: url(../KidsMagazine.ttf);
   justify-content: start;
 }
 
-
-
-
 input[type='text'] {
-border: 1px solid #aa771c;
-padding: .5vw;
-background-image: linear-gradient(147deg, #000000 0%, #130F40 74%);
-    box-shadow: 0.2vw 0.3vw 0.4vw black;
-margin-bottom: 2vw;
-color:#fbf5b7;
-font-weight: 100;
-};
-
-.shadow {
-
-      box-shadow: 0.4vw 0.3vw 0.4vw red;
-
+  border: 1px solid #aa771c;
+  padding: 0.5vw;
+  background-image: linear-gradient(147deg, #000000 0%, #130f40 74%);
+  box-shadow: 0.2vw 0.3vw 0.4vw black;
+  margin-bottom: 2vw;
+  color: #fbf5b7;
+  font-weight: 100;
 }
 
+.shadow {
+  box-shadow: 0.4vw 0.3vw 0.4vw red;
+}
+
+/* ==========================  TRANSITIONS ================ */
+
+.item-enter {
+  opacity: 0;
+  left: 25%;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: all 500ms ease-in;
+  left: 0%;
+}
+.item-exit {
+  opacity: 1;
+  left: 0%;
+}
+.item-exit-active {
+  opacity: 0;
+  transition: all 500ms ease-in;
+  left: 25%;
+}
